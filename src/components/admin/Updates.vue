@@ -1,10 +1,12 @@
 <template>
   <div>
-	  Login
+	  Updates
   </div>
 </template>
 
 <script>
+import TopItems from '../common/TopItems'
+import HeaderNav from '../common/HeaderNav'
 
 export default {
   name: 'Login',
@@ -15,6 +17,8 @@ export default {
   methods: {
   },
   components: {
+    HeaderNav,
+    TopItems
   }
 }
 </script>

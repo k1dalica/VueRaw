@@ -1,9 +1,12 @@
+import Vue from 'vue'
 import Router from 'vue-router'
 import user from '../services/api/user'
 import Home from '../components/home/Home'
 import Studio from '../components/studio/Studio'
 import About from '../components/about/About'
 import Login from '../components/admin/Login'
+import Updates from '../components/admin/Updates'
+import Admin from '../components/admin/Admin'
 
 
 let router = new Router({
@@ -25,19 +28,19 @@ let router = new Router({
       component: About
     },
     {
-      path: '/admin',
-      name: 'Admin',
-      component: Login,
+      path: '/admin/',
+      component: Admin,
       children: [
         {
-          path: '/login',
-          name: 'Login'
-          component: Login
+          path: 'updates',
+          name: 'Updates',
+          component: Updates,
+          meta: { auth: true }
         },
         {
-          path: '/updates',
-          component: Login,
-          meta: { auth: true },
+          path: 'login',
+          name: 'Login',
+          component: Login
         }
       ]
     }
@@ -45,17 +48,15 @@ let router = new Router({
 })
 
 router.beforeEach((to, from, next) => {
+  console.log('saas')
   if (to.matched.some(record => record.meta.auth)) {
-    if (!user.getToken()) {
-      next({
-        name: 'Login',
-        query: { redirect: to.fullPath }
-      })
+    if (!user.userLogged()) {
+      Vue.router.push({ path: '/admin/login' })
     } else {
       next()
     }
   } else {
-    next() // make sure to always call next()!
+    next()
   }
 })
 
