@@ -1,24 +1,18 @@
 <template>
-  <div>
-	  Updates
+  <div class="admin-login">
+
   </div>
 </template>
 
 <script>
-import TopItems from '../common/TopItems'
-import HeaderNav from '../common/HeaderNav'
-
 export default {
-  name: 'Login',
+  name: 'Updates',
   data () {
-    return {
-    }
+    return { }
   },
   methods: {
   },
   components: {
-    HeaderNav,
-    TopItems
   }
 }
 </script>

@@ -8,7 +8,6 @@ import Login from '../components/admin/Login'
 import Updates from '../components/admin/Updates'
 import Admin from '../components/admin/Admin'
 
-
 let router = new Router({
   mode: 'history',
   routes: [
@@ -32,15 +31,15 @@ let router = new Router({
       component: Admin,
       children: [
         {
+          path: 'login',
+          name: 'Login',
+          component: Login
+        },
+        {
           path: 'updates',
           name: 'Updates',
           component: Updates,
           meta: { auth: true }
-        },
-        {
-          path: 'login',
-          name: 'Login',
-          component: Login
         }
       ]
     }
@@ -48,10 +47,9 @@ let router = new Router({
 })
 
 router.beforeEach((to, from, next) => {
-  console.log('saas')
   if (to.matched.some(record => record.meta.auth)) {
     if (!user.userLogged()) {
-      Vue.router.push({ path: '/admin/login' })
+      next({name: 'Login'})
     } else {
       next()
     }
