@@ -7,6 +7,8 @@ import About from '../components/about/About'
 import Login from '../components/admin/Login'
 import Updates from '../components/admin/Updates'
 import Admin from '../components/admin/Admin'
+import AddUpdate from '../components/admin/AddUpdate'
+import EditUpdate from '../components/admin/EditUpdate'
 
 let router = new Router({
   mode: 'history',
@@ -31,17 +33,37 @@ let router = new Router({
       component: Admin,
       children: [
         {
+          path: '/',
+          name: 'Updates',
+          component: Updates,
+          meta: { auth: true }
+        },
+        {
+          path: 'addupdate',
+          name: 'AddUpdate',
+          component: AddUpdate,
+          meta: { auth: true }
+        },
+        {
+          path: 'editupdate',
+          name: 'EditUpdate',
+          component: EditUpdate,
+          meta: { auth: true }
+        },
+        {
           path: 'login',
           name: 'Login',
           component: Login
         },
         {
-          path: 'updates',
-          name: 'Updates',
-          component: Updates,
-          meta: { auth: true }
+          path: '*',
+          component: Login
         }
       ]
+    },
+    {
+      path: '*',
+      component: Home
     }
   ]
 })

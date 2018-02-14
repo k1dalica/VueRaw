@@ -32,7 +32,7 @@ export default {
           alert(res.data.msg);
         }).catch(function (error) {
           console.log(error)
-        });
+        })
       } else {
         this.subscribe();
       }
@@ -44,7 +44,7 @@ export default {
         self.visits = res.data.data
       }).catch(function (error) {
         console.log(error)
-      });
+      })
     },
 
     getVisits() {
@@ -53,12 +53,12 @@ export default {
         self.visits = res.data.data
       }).catch(function (error) {
         console.log(error)
-      });
+      })
     },
 
     validateEmail(email) {
-      var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-      return re.test(email.toLowerCase());
+      var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      return re.test(email.toLowerCase())
     }
     // getVisits() {
       // axios.get('/user', {

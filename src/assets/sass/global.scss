@@ -38,10 +38,10 @@ img { outline: none; border: none; }
 .padding-0 { padding: 0px; }
 .hidden { display: none !important; }
 
-.notify { width: 100%; background-color: #7a7a7a; border: 1px solid #545454; color: #212121; border-radius: 3px; display: table; }
+.notify { width: 100%; background-color: #7a7a7a; border: 1px solid #545454; color: #fff; border-radius: 3px; display: table; }
 .notify div { display: table-cell; padding: 5px; box-sizing: border-box; text-align: left; }
 .notify .icon { width: 45px; background-color: #545454; background-image: url(./../images/info.png); background-position: center; background-repeat: no-repeat; }
-.notify .text { color: #212121; font-size: 18px; padding: 10px; }
+.notify .text { color: #fff; font-size: 18px; padding: 10px; }
 .notify .close { position: relative; width: 35px; }
 .notify .close i { opacity: 0.8; width: 16px; height: 16px; background-image: url(./../images/closemini.png); background-position: center; background-repeat: no-repeat; position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; margin: auto; }
 .notify .close i:hover { opacity: 1; cursor: pointer; }
@@ -55,3 +55,6 @@ img { outline: none; border: none; }
 section { margin: 0 auto; }
 
 textarea { resize: none; }
+
+button { background-color: #212121; color: #fff; height: 50px; padding: 0 20px; border: none; border-radius: 7px; font-family: "Arial Black"; text-transform: uppercase; font-size: 21px; }
+button:hover, button:focus { background-color: #000; cursor: pointer; }
