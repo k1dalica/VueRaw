@@ -10,14 +10,18 @@
 		$onPage = Input::get('onPage');
 		if(empty($onPage))
 			$onPage = $params[0];
-		if(filter_var($onPage, FILTER_VALIDATE_INT) === false)
-			$onPage = 1;
-		$updates = Updates::get($onPage);
-		if($updates != false) {
-			$data = $OK;
-			$data['data'] = $updates;
+		if($onPage == "all") {
+			$data['data'] = Updates::all();
+		} else {
+			if(filter_var($onPage, FILTER_VALIDATE_INT) === false)
+				$onPage = 1;
+			$updates = Updates::get($onPage);
+			if($updates != false) {
+				$data = $OK;
+				$data['data'] = $updates;
+			}
+			$data['lastpage'] = Updates::lastPage() == $onPage ? true : false;
 		}
-		$data['lastpage'] = Updates::lastPage() == $onPage ? true : false;
 	}
 
 	if($method == "POST") {

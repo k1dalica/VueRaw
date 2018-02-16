@@ -7,9 +7,16 @@ import App from './App'
 import { router } from './router'
 import Vuex from 'vuex'
 import VueRouter from 'vue-router'
-import store from './store'
 import infiniteScroll from 'vue-infinite-scroll'
 import axios from 'axios';
+import VueQuillEditor from 'vue-quill-editor'
+
+// require styles
+import 'quill/dist/quill.core.css'
+import 'quill/dist/quill.snow.css'
+import 'quill/dist/quill.bubble.css'
+
+Vue.use(VueQuillEditor, {})
 
 Vue.use(Vuex)
 Vue.use(VueRouter)
@@ -20,7 +27,6 @@ Vue.router = router
 new Vue({
   el: '#app',
   router,
-  store,
   template: '<App/>',
   components: { App }
 })

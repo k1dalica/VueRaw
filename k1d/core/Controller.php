@@ -18,6 +18,11 @@ class Api extends Controller {
         $this->view('comments', []);
     }
 
+    public function comment($id = null) {
+        $this->model('Comments');
+        $this->view('comment', [$id]);
+    }
+
     public function subscribe() {
         $this->view('subscribe', []);
     }
@@ -30,6 +35,11 @@ class Api extends Controller {
     public function update($id = null) {
         $this->model('Updates');
         $this->view('update', [$id]);
+    }
+
+    public function editupdate($id = null) {
+        $this->model('Updates');
+        $this->view('editupdate', [$id]);
     }
 
     public function login($id = null) {

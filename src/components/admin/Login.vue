@@ -24,7 +24,7 @@ export default {
   },
   created () {
     if (user.userLogged()) {
-      this.router.push({ name: 'Updates'})
+      this.$router.push({ name: 'Updates'})
     }
   },
   methods: {
@@ -45,7 +45,8 @@ export default {
         self.password = ''
         axios.post('http://k1d.local/api/login', params).then(function (res) {
           if(res.data.status) {
-            localStorage.setItem("token", res.data.token);
+            localStorage.setItem("token", res.data.token)
+            self.$router.push({ name: 'Updates'})
           } else {
             self.error = true
             self.msg = res.data.msg

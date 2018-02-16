@@ -1,8 +1,8 @@
 <template>
   <div>
-    <TopItems/>
-
     <HeaderNav/>
+
+    <div class="content ql-editor" v-html="content"></div>
   </div>
 </template>
 
@@ -14,6 +14,7 @@ export default {
   name: 'Studio',
   data () {
     return {
+      content: ''
     }
   },
   methods: {

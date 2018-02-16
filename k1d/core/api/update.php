@@ -54,24 +54,21 @@
             }
         }
 	}
-
-	if($method == "PUT") {
-        $token = Input::get('token');
-        if(Token::check($token)) {
-
-        } else {
-            $data['msg'] = "Permission denied. Invalid token !";
-        }
-    }
     
     if($method == "DELETE") {
         $token = Input::get('token');
-		if(Token::check($token)) {
+        if(Token::check($token)) {
             $id = $params[0];
             if(empty($id)) {
                 $data['msg'] = "Param id is missing !";
             } else {
-
+                $q = $db->query("SELECT * FROM `update_images` WHERE `uid` = ?", [$id]);
+                if($db->count() > 0)
+                    foreach($q->results() as $res)
+                        unlink("..".$res->path);
+                $q = $db->delete("update_images",["uid", "=", $id]);
+                $q = $db->delete("updates",["id","=",$id]);
+                $data = $OK;
             }
         } else {
             $data['msg'] = "Permission denied. Invalid token !";

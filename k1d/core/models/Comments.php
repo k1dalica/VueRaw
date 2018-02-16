@@ -58,7 +58,7 @@ class Comments {
 		$q = $db->query("SELECT * FROM `comments`");
 		if($db->count() > 0) {
 			foreach($q->results() as $res)
-				$list[] = new Updates($res);
+				$list[] = new Comments($res);
 		}
 		return $list;
 	}
